@@ -1,8 +1,8 @@
 import { api } from '../request';
 
 export const leaderboardApi = {
-  getTopDonors: async () => {
-    const res = await api.get('/leaderboard/top-donors');
+  getGlobal: async (page = 1, limit = 10) => {
+    const res = await api.get(`leaderboard?page=${page}&limit=${limit}`);
     return res.data;
   }
 };

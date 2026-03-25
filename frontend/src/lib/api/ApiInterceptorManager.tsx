@@ -55,8 +55,9 @@ export const ApiInterceptorManager = () => {
           isRefreshing = true;
 
           try {
+            const apiBase = (process.env.NEXT_PUBLIC_API_URL || (process.env.NODE_ENV === 'development' ? 'http://localhost:5000/api' : 'https://golf-winner-backend-02.onrender.com/api')).replace(/\/$/, '');
             const { data } = await axios.post(
-              `${process.env.NEXT_PUBLIC_API_URL || (process.env.NODE_ENV === 'development' ? 'http://localhost:5000/api' : 'https://golf-winner-backend-02.onrender.com/api')}/auth/refresh-token`,
+              `${apiBase}/auth/refresh-token`,
               {},
               { withCredentials: true }
             );
