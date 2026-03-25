@@ -6,19 +6,7 @@ import { env } from './config/env';
 import { logger } from './utils/logger';
 
 const bootstrap = async (): Promise<void> => {
-  // Connect to MongoDB
-  await connectDB();
-
-  // Connect Redis (lazy, but trigger early)
-  const redis = getRedis();
-  await redis.connect().catch(() => {
-    logger.warn('Redis connection delayed — will retry on first use');
-  });
-
-  // Register cron jobs
-  registerCronJobs();
-
-  // Start HTTP server
+  // ─── Phase 1: Immediate Startup ────────────────────────
   const app = createApp();
   const PORT = parseInt(env.PORT, 10);
 
@@ -26,11 +14,26 @@ const bootstrap = async (): Promise<void> => {
     logger.info(`🚀 Server running on port ${PORT} [${env.NODE_ENV}]`);
   });
 
-  // Graceful shutdown
+  // ─── Phase 2: Background Services ─────────────────────
+  // Connect Redis (lazy, but trigger early)
+  const redis = getRedis();
+  redis.connect().catch(() => {
+    logger.warn('Redis connection delayed — will retry on first use');
+  });
+
+  // Register cron jobs
+  registerCronJobs();
+
+  // Connect to MongoDB in background to avoid 502s
+  connectDB().catch((err) => {
+    logger.error('❌ Failed to connect to MongoDB on startup', { error: err.message });
+  });
+
+  // ─── Phase 3: Lifecycle Management ────────────────────
   const shutdown = async (signal: string) => {
     logger.info(`Received ${signal}. Shutting down gracefully...`);
     server.close(async () => {
-      await redis.quit();
+      await redis.quit().catch(() => {});
       logger.info('✅ HTTP server and Redis closed');
       process.exit(0);
     });
