@@ -1,0 +1,21 @@
+# Dependencies
+node_modules/
+
+# Build
+dist/
+
+# Environment
+.env
+
+
+# Logs
+*.log
+server.log
+debug_output.txt
+
+# Vercel
+.vercel/
+
+# OS files
+.DS_Store
+Thumbs.db

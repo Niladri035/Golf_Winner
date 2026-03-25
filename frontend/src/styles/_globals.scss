@@ -1,0 +1,45 @@
+@use 'variables' as *;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@300;400;500;600&display=swap');
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: $soft-bg;
+  color: $deep-blue;
+  font-family: $font-body;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-heading;
+  font-weight: 700;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::selection {
+  background: $accent-red;
+  color: #fff;
+}
+
+/* Base class for glass effects */
+.glass-panel {
+  background: $glass-gradient;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: $glass-border;
+  border-radius: 16px;
+  box-shadow: $premium-shadow;
+}
