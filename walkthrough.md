@@ -9,8 +9,9 @@ This walkthrough explains the changes made and the steps to complete the deploym
 - **`backend/src/app.ts`**: Updated CORS to use `env.CLIENT_URL` responsibly.
 
 ### Frontend (Vercel)
-- **UI Container Fix**: Found that `justify-center` was clipping the Login/Register cards on smaller screens. Fixed by using consistent vertical padding (`py-12 md:py-20`).
-- **Hardcoded Fallback**: Added `https://golf-charity-backend.onrender.com/api` as a fallback for the API URL.
+- **Home Page (Hero) Fix**: Adjusted heading size and increased gap between text and floating cards. Added continuous floating animations for a more premium feel.
+- **Navbar Optimization**: Compacted admin links and user name display to prevent layout crowding.
+- **UI Container Fix**: Found that `justify-center` was clipping the Login/Register cards. Fixed with consistent vertical padding.
 
 - **Environment Variables**: I've also added the `NEXT_PUBLIC_API_URL` variable to your Vercel project settings via CLI.
 - **GitHub Sync**: Pushed the final connection fix to `main`.

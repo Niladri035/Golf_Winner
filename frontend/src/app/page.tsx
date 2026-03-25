@@ -15,7 +15,7 @@ export default function Home() {
   const opacityText = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
 
   return (
-    <div ref={containerRef} className="relative min-h-screen bg-soft-bg overflow-hidden flex items-center justify-center pt-20">
+    <div ref={containerRef} className="relative min-h-[calc(100vh-80px)] bg-soft-bg overflow-hidden flex flex-col items-center justify-center py-12 lg:py-20">
       
       {/* Abstract Background Shapes */}
       <motion.div 
