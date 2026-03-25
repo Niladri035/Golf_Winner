@@ -30,7 +30,7 @@ export default function Home() {
       {/* Decorative Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(rgba(0,48,73,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(0,48,73,0.03)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:radial-gradient(ellipse_60%_60%_at_50%_50%,#000_70%,transparent_100%)]" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-20 lg:gap-32 items-center">
         
         {/* Left: Text Content */}
         <motion.div 
@@ -53,7 +53,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-            className="text-6xl md:text-8xl font-heading font-extrabold text-deep-blue leading-[0.9] tracking-tighter mb-6"
+            className="text-6xl md:text-7xl lg:text-8xl font-heading font-extrabold text-deep-blue leading-[0.9] tracking-tighter mb-6"
           >
             Play <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-dark to-accent-red">With</span><br/> Purpose.
           </motion.h1>
@@ -90,10 +90,22 @@ export default function Home() {
         <div className="relative h-[600px] w-full hidden lg:block perspective-1000">
           
           <motion.div
-            initial={{ opacity: 0, x: 50, y: 50, rotateY: 10, rotateX: 10 }}
-            animate={{ opacity: 1, x: 0, y: 0, rotateY: -15, rotateX: 15 }}
-            transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
-            className="absolute right-0 top-1/2 -translate-y-1/2 w-80 p-8 rounded-3xl bg-white/40 backdrop-blur-2xl border border-white/50 shadow-2xl z-20"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1,
+              y: [0, -15, 0],
+              rotateY: [-15, -12, -15],
+              rotateX: [15, 18, 15]
+            }}
+            transition={{ 
+              opacity: { duration: 1.2, delay: 0.5 },
+              scale: { duration: 1.2, delay: 0.5 },
+              y: { duration: 4, repeat: Infinity, ease: "easeInOut" },
+              rotateY: { duration: 6, repeat: Infinity, ease: "easeInOut" },
+              rotateX: { duration: 5, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="absolute right-[-20px] top-1/2 -translate-y-1/2 w-80 p-8 rounded-3xl bg-white/40 backdrop-blur-2xl border border-white/50 shadow-2xl z-20"
           >
             <div className="w-12 h-12 rounded-full bg-accent-red/20 flex items-center justify-center mb-6">
               <Trophy className="h-6 w-6 text-accent-red" />
@@ -103,10 +115,22 @@ export default function Home() {
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, x: -50, y: -50, rotateY: -10, rotateX: -10 }}
-            animate={{ opacity: 1, x: -40, y: 80, rotateY: 15, rotateX: -15 }}
-            transition={{ duration: 1.2, delay: 0.7, ease: "easeOut" }}
-            className="absolute left-10 top-20 w-72 p-8 rounded-3xl bg-gradient-to-br from-deep-blue to-accent-blue text-white shadow-2xl z-10"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ 
+              opacity: 1, 
+              scale: 1,
+              y: [80, 95, 80],
+              rotateY: [15, 18, 15],
+              rotateX: [-15, -12, -15]
+            }}
+            transition={{ 
+              opacity: { duration: 1.2, delay: 0.7 },
+              scale: { duration: 1.2, delay: 0.7 },
+              y: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+              rotateY: { duration: 7, repeat: Infinity, ease: "easeInOut" },
+              rotateX: { duration: 6, repeat: Infinity, ease: "easeInOut" }
+            }}
+            className="absolute left-0 top-20 w-72 p-8 rounded-3xl bg-gradient-to-br from-deep-blue to-accent-blue text-white shadow-2xl z-10"
           >
              <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center mb-6">
               <Heart className="h-6 w-6 text-white" />

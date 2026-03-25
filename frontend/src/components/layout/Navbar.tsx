@@ -51,12 +51,12 @@ export const Navbar = () => {
             <div className="flex items-center gap-4 border-l border-deep-blue/10 pl-6">
               {isAuthenticated ? (
                 <div className="flex items-center gap-4">
-                  <Link href="/dashboard" className="text-sm font-medium text-deep-blue flex items-center gap-2 hover:text-accent-red transition-colors">
-                    <UserIcon size={18} />
+                  <Link href="/dashboard" className="text-xs lg:text-sm font-medium text-deep-blue flex items-center gap-1.5 hover:text-accent-red transition-colors max-w-[120px] truncate">
+                    <UserIcon size={16} />
                     <span>{user?.name}</span>
                   </Link>
                   {user?.role === 'admin' && (
-                    <Link href="/admin" className="text-sm font-bold text-accent-red flex items-center gap-2 hover:text-primary-dark transition-colors border-l border-deep-blue/10 pl-4">
+                    <Link href="/admin" className="text-xs lg:text-sm font-bold text-accent-red flex items-center gap-1.5 hover:text-primary-dark transition-colors border-l border-deep-blue/10 pl-3">
                       <span>Admin Console</span>
                     </Link>
                   )}

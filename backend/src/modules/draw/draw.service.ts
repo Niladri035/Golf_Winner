@@ -7,6 +7,7 @@ import { Charity } from '../../models/Charity';
 import { ApiError } from '../../utils/apiError';
 import { logger } from '../../utils/logger';
 import { getRedis, CACHE_TTL } from '../../config/redis';
+import { env } from '../../config/env';
 import {
   generateRandomDraw,
   generateWeightedDraw,
@@ -25,9 +26,9 @@ export class DrawService {
   async runDraw(mode: DrawMode = 'weighted'): Promise<InstanceType<typeof Draw>> {
     const month = new Date().toISOString().slice(0, 7); // "YYYY-MM"
 
-    // Prevent duplicate monthly draw
+    // Prevent duplicate monthly draw (unless in development)
     const existing = await Draw.findOne({ month });
-    if (existing?.status === 'completed') {
+    if (existing?.status === 'completed' && env.NODE_ENV !== 'development') {
       throw ApiError.conflict(`Draw for ${month} already completed`);
     }
 
