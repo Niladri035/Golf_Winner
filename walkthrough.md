@@ -9,8 +9,10 @@ This walkthrough explains the changes made and the steps to complete the deploym
 - **`backend/src/app.ts`**: Updated CORS to use `env.CLIENT_URL` responsibly.
 
 ### Frontend (Vercel)
-- **Environment Variables**: I've successfully added the `NEXT_PUBLIC_API_URL` variable to your Vercel project via CLI. This was the missing piece for the frontend-backend connection.
-- **GitHub Sync**: Pushed the latest code to `main`.
+- **Hardcoded Fallback**: I've added `https://golf-charity-backend.onrender.com/api` as a hardcoded fallback in `request.ts` and `ApiInterceptorManager.tsx`. This guarantees the frontend will find the backend even if environment variables are delayed.
+- **Environment Variables**: I've also added the `NEXT_PUBLIC_API_URL` variable to your Vercel project settings via CLI.
+- **GitHub Sync**: Pushed the final connection fix to `main`.
+
 
 
 ## Deployment Steps

@@ -49,7 +49,7 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center p-6 bg-soft-bg relative overflow-hidden">
+    <div className="min-h-[calc(100vh-80px)] flex flex-col items-center py-12 md:py-20 p-6 bg-soft-bg relative overflow-hidden">
       
       {/* Background Decor */}
       <div className="absolute top-[-10%] left-[-10%] w-[40vw] h-[40vw] rounded-full bg-primary-dark/5 blur-3xl pointer-events-none" />

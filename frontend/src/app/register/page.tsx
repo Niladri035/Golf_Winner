@@ -58,7 +58,7 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="min-h-[calc(100vh-80px)] flex flex-col items-center justify-center p-6 bg-soft-bg relative overflow-hidden py-12">
+    <div className="min-h-[calc(100vh-80px)] flex flex-col items-center py-12 md:py-20 p-6 bg-soft-bg relative overflow-hidden">
       
       {/* Background Decor */}
       <div className="absolute top-[20%] right-[-10%] w-[50vw] h-[50vw] rounded-full bg-primary-dark/5 blur-3xl pointer-events-none" />
