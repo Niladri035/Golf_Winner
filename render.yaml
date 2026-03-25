@@ -39,3 +39,12 @@ services:
         sync: false
       - key: CLIENT_URL
         sync: false
+
+  - type: static
+    name: golf-charity-frontend
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    publishDir: .next
+    envVars:
+      - key: NEXT_PUBLIC_API_URL
+        value: https://golf-winner-backend-02.onrender.com/api
