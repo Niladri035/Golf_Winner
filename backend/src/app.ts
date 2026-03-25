@@ -25,7 +25,7 @@ const createApp = (): Application => {
   app.use(helmet());
   app.use(
     cors({
-      origin: true, // Allow all origins to resolve CORS error immediately
+      origin: env.CLIENT_URL || true, 
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     })
