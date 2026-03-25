@@ -9,7 +9,7 @@ This walkthrough explains the changes made and the steps to complete the deploym
 - **`backend/src/app.ts`**: Updated CORS to use `env.CLIENT_URL` responsibly.
 
 ### Frontend (Vercel)
-- **Home Page (Hero) Fix**: Adjusted heading size and increased gap between text and floating cards. Added continuous floating animations for a more premium feel.
+- **Home Page (Hero) Fix**: Removed redundant padding and adjusted container height to ensure the "Join the Club" buttons are always visible without clipping.
 - **Navbar Optimization**: Compacted admin links and user name display to prevent layout crowding.
 - **UI Container Fix**: Found that `justify-center` was clipping the Login/Register cards. Fixed with consistent vertical padding.
 

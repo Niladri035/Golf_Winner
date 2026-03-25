@@ -9,11 +9,11 @@ export default async (req: any, res: any) => {
     // 1. Ensure DB is connected
     await connectDB();
 
-    // 2. Initialize Redis (optional, based on your logic)
+    // 2. Initialize Redis (ensure connection in serverless)
     const redis = getRedis();
-    if (!redis.isOpen) {
-      await redis.connect().catch(() => {
-        logger.warn('Redis connection failed in serverless context');
+    if (redis.status === 'wait') {
+      await redis.connect().catch((err) => {
+        logger.warn('Redis connection failed in serverless context', { error: err.message });
       });
     }
 
