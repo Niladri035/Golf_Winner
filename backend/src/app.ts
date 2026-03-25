@@ -25,7 +25,14 @@ const createApp = (): Application => {
   app.use(helmet());
   app.use(
     cors({
-      origin: env.CLIENT_URL || true, 
+      origin: (origin, callback) => {
+        const allowedOrigins = [env.CLIENT_URL, 'http://localhost:3000'];
+        if (!origin || allowedOrigins.includes(origin) || origin.endsWith('.vercel.app')) {
+          callback(null, true);
+        } else {
+          callback(new Error('Not allowed by CORS'));
+        }
+      },
       credentials: true,
       methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     })
