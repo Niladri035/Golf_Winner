@@ -1,6 +1,7 @@
 services:
   - type: web
     name: golf-charity-backend
+    rootDir: backend
     env: node
     plan: free
     buildCommand: npm install && npm run build
