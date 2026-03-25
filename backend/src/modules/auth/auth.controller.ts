@@ -7,7 +7,7 @@ import { env } from '../../config/env';
 const REFRESH_COOKIE_OPTIONS = {
   httpOnly: true,
   secure: true, // Must be true for sameSite: 'none'
-  sameSite: (env.NODE_ENV === 'production' ? 'none' : 'lax') as const,
+  sameSite: (env.NODE_ENV === 'production' ? 'none' : 'lax') as 'none' | 'lax',
   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
 };
 
