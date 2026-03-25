@@ -56,7 +56,7 @@ export const ApiInterceptorManager = () => {
 
           try {
             const { data } = await axios.post(
-              `${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'}/auth/refresh-token`,
+              `${process.env.NEXT_PUBLIC_API_URL || 'https://golf-charity-backend.onrender.com/api'}/auth/refresh-token`,
               {},
               { withCredentials: true }
             );

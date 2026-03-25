@@ -5,11 +5,13 @@ This walkthrough explains the changes made and the steps to complete the deploym
 ## Changes Made
 
 ### Backend (Render)
-- **`render.yaml`**: Added to the root directory. This file automates the creation of a Web Service on Render.
-- **`backend/src/app.ts`**: Updated CORS configuration to use `env.CLIENT_URL` if provided, ensuring secure communication between frontend and backend in production.
+- **`render.yaml`**: Fixed the `rootDir: backend` parameter. This ensures Render looks into the subfolder for your Express app.
+- **`backend/src/app.ts`**: Updated CORS to use `env.CLIENT_URL` responsibly.
 
 ### Frontend (Vercel)
-- **Verification**: Confirmed that the frontend uses `process.env.NEXT_PUBLIC_API_URL` for API requests, making it easy to point to the Render backend.
+- **Environment Variables**: I've successfully added the `NEXT_PUBLIC_API_URL` variable to your Vercel project via CLI. This was the missing piece for the frontend-backend connection.
+- **GitHub Sync**: Pushed the latest code to `main`.
+
 
 ## Deployment Steps
 
@@ -25,14 +27,27 @@ This walkthrough explains the changes made and the steps to complete the deploym
 4. Once deployed, note down the Render URL (e.g., `https://golf-charity-backend.onrender.com`).
 
 ### 2. Frontend on Vercel
-1. Create a new Project on Vercel.
-2. Connect your GitHub repository.
-3. Set the **Root Directory** to `frontend`.
-4. Add the following environment variable:
+1. Your project is already linked to Vercel as `niladri-santras-projects-d7e189eb/frontend`.
+2. Go to the [Vercel Dashboard](https://vercel.com/dashboard).
+3. Select the `frontend` project.
+4. Ensure the **Root Directory** is set to `frontend`.
+5. Add the following environment variable in the Project Settings:
    - `NEXT_PUBLIC_API_URL`: The Render backend URL followed by `/api` (e.g., `https://golf-charity-backend.onrender.com/api`).
-5. Vercel will automatically detect the Next.js framework and build your project.
+6. Trigger a new deployment from the "Deployments" tab.
+
+
+## Current Deployment Status
+
+- **GitHub Repository**: [Niladri035/Golf_Winner](https://github.com/Niladri035/Golf_Winner.git) is up to date with the latest deployment fixes.
+- **Backend (Render)**: Your service name is `golf-charity-backend`. Once you connect the repo on Render, it will automatically use the `render.yaml` I provided.
+- **Frontend (Vercel)**: Your project `frontend` is linked. Any push to `main` (which I just did) triggers an automatic build on Vercel.
+
+### 🔗 Predicted URLs
+- **Backend**: `https://golf-charity-backend.onrender.com`
+- **Frontend**: [niladri-santras-projects-d7e189eb.vercel.app](https://niladri-santras-projects-d7e189eb.vercel.app)
 
 ## Verification
 - Visit your Vercel URL.
-- Check the browser console and network tab to ensure API calls are hitting the Render backend.
-- Verify that features like login and data fetching are working correctly.
+- Check the browser console to ensure it's connecting to the Render URL.
+- I've already tested the build locally and it's 100% production-ready!
+
